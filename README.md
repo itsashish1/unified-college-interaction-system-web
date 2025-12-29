@@ -123,24 +123,7 @@ without complex management or heavy administrative overhead.
 - MongoDB
 
 ---
-
-## 📂 Project Structure (Suggested)
-
-unified-college-interaction-system/
-│
-├── frontend/
-│ ├── src/
-│ ├── public/
-│ └── package.json
-│
-├── backend/
-│ ├── routes/
-│ ├── controllers/
-│ ├── models/
-│ └── server.js
-│
-├── README.md
-└── package.json
+ 
 
 
 ---
