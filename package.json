@@ -1,0 +1,23 @@
+{
+  "name": "unified-college-interaction-system-web",
+  "version": "1.0.0",
+  "description": "<div align=\"center\">",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harshitj183/unified-college-interaction-system-web.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/harshitj183/unified-college-interaction-system-web/issues"
+  },
+  "homepage": "https://github.com/harshitj183/unified-college-interaction-system-web#readme"
+}

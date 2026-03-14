@@ -1,0 +1,7 @@
+TypeError: next is not a function
+    at model.<anonymous> (file:///C:/Users/harsh/Downloads/unified-college-interaction-system-web/server/models/User.model.js:28:3)
+    at async Kareem.execPre (C:\Users\harsh\Downloads\unified-college-interaction-system-web\server\node_modules\kareem\index.js:70:24)
+    at async model.$__save (C:\Users\harsh\Downloads\unified-college-interaction-system-web\server\node_modules\mongoose\lib\model.js:393:5)
+    at async model.save (C:\Users\harsh\Downloads\unified-college-interaction-system-web\server\node_modules\mongoose\lib\model.js:663:5)
+    at async model.create (C:\Users\harsh\Downloads\unified-college-interaction-system-web\server\node_modules\mongoose\lib\model.js:2750:5)
+    at async seedDB (file:///C:/Users/harsh/Downloads/unified-college-interaction-system-web/server/seed.js:25:23)

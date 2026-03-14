@@ -1,0 +1,5 @@
+ValidationError: Club validation failed: category: `academic` is not a valid enum value for path `category`.
+    at Document.invalidate (C:\Users\harsh\Downloads\unified-college-interaction-system-web\server\node_modules\mongoose\lib\document.js:3381:32)
+    at C:\Users\harsh\Downloads\unified-college-interaction-system-web\server\node_modules\mongoose\lib\document.js:3142:17
+    at C:\Users\harsh\Downloads\unified-college-interaction-system-web\server\node_modules\mongoose\lib\schemaType.js:1446:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:84:11)

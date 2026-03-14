@@ -1,169 +1,169 @@
+<div align="center">
+
 # Unified College Interaction System
 
-## 📌 Overview
-The **Unified College Interaction System** is a web-based platform designed to centralize
-college-related information and interactions into a single, organized system. It aims to
-bridge the communication gap between students, clubs, faculty, and administration by
-providing easy access to events, registrations, discussions, and faculty contact details.
+**A centralized web platform bridging the gap between students, clubs, faculty, and administration.**
 
-The system replaces scattered communication channels such as WhatsApp groups, physical
-notice boards, and informal messages with a structured and reliable digital solution.
+[![Academic Project](https://img.shields.io/badge/Purpose-Academic-blue?style=flat-square)](.)
+[![Stack](https://img.shields.io/badge/Stack-MERN-green?style=flat-square)](.)
+[![Team](https://img.shields.io/badge/Team-Shadow-purple?style=flat-square)](.)
+[![License](https://img.shields.io/badge/License-Academic%20Use%20Only-orange?style=flat-square)](.)
 
----
-
-## 🎯 Problem Statement
-In most colleges, students face difficulties due to fragmented information sources.
-Important details related to clubs, events, faculty contacts, and announcements are
-spread across multiple platforms, leading to confusion, missed deadlines, and poor
-engagement.
-
-Students often struggle to:
-- Find correct teacher email IDs or contact details
-- Stay updated with club activities and college events
-- Register for events on time
-- Ask academic questions in a structured environment
-- Track official announcements efficiently
-
-There is a strong need for a unified system that organizes and simplifies these
-interactions.
+</div>
 
 ---
 
-## 💡 Proposed Solution
-The **Unified College Interaction System** provides a centralized web platform where:
-- Students can view clubs, events, announcements, and faculty details
-- Events can be managed and registrations handled digitally
-- A discussion forum enables academic and general queries
-- Authorized users can post announcements and updates
+## Overview
 
-The system is designed to be simple, scalable, and practical for real-world college usage,
-without complex management or heavy administrative overhead.
+The **Unified College Interaction System** is a full-stack web platform designed to centralize all college-related information and interactions into a single, organized digital hub. It aims to eliminate the fragmentation caused by scattered communication channels — WhatsApp groups, physical notice boards, and informal messages — and replace them with a structured, reliable, and accessible solution for students, faculty, and administrators.
 
 ---
 
-## ✨ Key Features
+## Problem Statement
 
-### 🔹 Clubs & Societies Module
-- List of all college clubs and societies
-- Club descriptions, coordinators, and activities
-- Easy access for students to explore clubs
+In most colleges, critical information is spread across multiple unofficial channels, leading to:
 
-### 🔹 Event Management & Registration
-- Create and publish college events
-- View upcoming, ongoing, and past events
-- One-click student registration
-- Automatic participant list generation
+- Missed event deadlines and late registrations
+- Difficulty finding verified faculty contact details
+- No structured platform for academic discussions
+- Inefficient, informal announcement methods
+- Poor visibility into club activities and college happenings
 
-### 🔹 Discussion Forum
-- Structured academic and general discussions
-- Question–answer based interaction
-- Reduces dependency on unorganized chat groups
-
-### 🔹 Faculty Directory
-- Searchable faculty database
-- Teacher details including department and email
-- Quick access to verified contact information
-
-### 🔹 Announcements & Notices
-- Centralized digital notice board
-- Important academic updates and deadlines
-
-### 🔹 Search Functionality
-- Search across clubs, events, faculty, and forum posts
+There is a strong need for a **unified system** that organizes and simplifies these interactions in one place.
 
 ---
 
-## 🧑‍💻 User Roles
+## Solution
 
-### 👨‍🎓 Student
-- View clubs, events, and announcements
-- Register for events
+The **Unified College Interaction System** provides:
+
+- A centralized hub for clubs, events, announcements, and faculty details
+- Digital event management with online registration and participant tracking
+- A structured discussion forum for academic and general queries
+- Role-based access for students, club admins, faculty, and system admins
+- A scalable and practical platform suited for real-world college deployment
+
+---
+
+## Key Features
+
+| Module | Description |
+|---|---|
+| **Clubs & Societies** | Browse all college clubs, view descriptions, coordinators, and activities |
+| **Event Management** | Create, publish, and manage events with one-click student registration |
+| **Discussion Forum** | Structured Q&A-based academic and general discussions |
+| **Faculty Directory** | Searchable database with verified contact details and department info |
+| **Announcements** | Centralized digital notice board for official updates and deadlines |
+| **Global Search** | Search across clubs, events, faculty, and forum posts in one place |
+| **Support Tickets** | Users can raise support tickets; admins can manage and reply |
+
+---
+
+## User Roles
+
+### Student
+- Browse clubs, events, and announcements
+- Register for events online
 - Participate in discussion forums
-- Access faculty contact details
+- Access verified faculty contact information
+- Raise support tickets
 
-### 🏫 Club Admin / Authorized User
-- Create and manage events
-- Post club-related updates
+### Club Admin / Authorized User
+- Create and manage club events
+- Post club-related updates and announcements
 
-### 👩‍🏫 Faculty / Admin
-- Publish announcements
-- Maintain official information
-
----
-
-## 🏗️ System Architecture (High-Level)
-
-1. **Frontend**
-   - User-friendly interface for students and administrators
-   - Displays data fetched from backend APIs
-
-2. **Backend**
-   - Handles application logic
-   - Manages authentication and role-based access
-   - Processes event registration and forum activities
-
-3. **Database**
-   - Stores users, clubs, events, registrations, posts, and faculty details
+### Faculty / System Admin
+- Publish official announcements
+- Manage faculty directory entries
+- Handle support tickets and platform moderation
 
 ---
 
-## 🛠️ Technologies Used
+## System Architecture
 
-### Frontend
-- HTML
-- CSS
-- JavaScript
-- React (optional)
-
-### Backend
-- Node.js
-- Express.js
-
-### Database
-- MongoDB
-
----
- 
-
-
----
-
-## 🚀 Future Enhancements
-- Email or notification alerts for events
-- Mobile application support
-- Advanced role-based dashboards
-- Internship and placement opportunity board
-- Analytics for event participation
+```
+┌─────────────────────────────────────────────────┐
+│                   Frontend (React)               │
+│      User Interface · Role-based Views           │
+│      Event Registration · Forum · Dashboard      │
+└───────────────────┬─────────────────────────────┘
+                    │ REST API (HTTP/JSON)
+┌───────────────────▼─────────────────────────────┐
+│              Backend (Node.js + Express)          │
+│   Auth · Role-based Access · Business Logic       │
+│   Event Handling · Forum · Support Tickets        │
+└───────────────────┬─────────────────────────────┘
+                    │ Mongoose ODM
+┌───────────────────▼─────────────────────────────┐
+│                  Database (MongoDB)               │
+│  Users · Clubs · Events · Posts · Registrations  │
+└─────────────────────────────────────────────────┘
+```
 
 ---
 
-## 🎓 Academic Relevance
-This project is suitable for academic evaluation as it:
-- Solves a real and recurring college problem
-- Demonstrates system design and full-stack development skills
-- Is practical, scalable, and easy to explain during viva
-- Encourages digital and collaborative campus culture
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| **Frontend** | React.js, HTML5, CSS3, JavaScript |
+| **Backend** | Node.js, Express.js |
+| **Database** | MongoDB (Mongoose ODM) |
+| **Auth** | JWT (JSON Web Tokens) |
+| **Version Control** | Git & GitHub |
 
 ---
 
-## 🏁 Conclusion
-The **Unified College Interaction System** provides a reliable and centralized platform
-that simplifies communication, improves accessibility, and enhances student engagement
-within a college ecosystem.
+## Project Documents
+
+| Document | Link |
+|---|---|
+| Synopsis Report | [`docs/synopsis_report.pdf`](docs/synopsis_report.pdf) |
+| Presentation (PDF) | [`docs/presentation_ppt.pdf`](docs/presentation_ppt.pdf) |
+| Presentation (PPT) | [`docs/presentation.pptx`](docs/presentation.pptx) |
 
 ---
 
-## 👤 Project Team -Shadow 
-## Team Members
+## Future Enhancements
 
-| S.No | Name            | Email ID                    | Role   |
-|-----:|-----------------|-----------------------------|--------|
-| 1    | Harshit Jaiswal | 2301010397@krmu.edu.in      | Leader |
-| 2    | Ashish Yadav    | 2301010413@krmu.edu.in      | Member |
-| 3    | Chetan Parmar  | 2301010384@krmu.edu.in      | Member |
-| 4    | Harsh Deo      | 2301010386@krmu.edu.in      | Member |
+- [ ] Email & push notification alerts for events and announcements
+- [ ] Mobile application (Android / iOS)
+- [ ] Advanced analytics dashboard for event participation trends
+- [ ] Internship and placement opportunity board
+- [ ] AI-powered forum answer suggestions
+- [ ] Calendar integration for event reminders
 
 ---
 
-## 📜 License
-This project is developed for academic purposes only.
+## Academic Relevance
+
+This project is well-suited for academic evaluation as it:
+
+- Solves a **real and recurring problem** in college environments
+- Demonstrates **full-stack development** skills (MERN stack)
+- Applies **system design principles** including role-based access control
+- Is **practical, scalable**, and straightforward to explain during viva
+- Promotes a **digital and collaborative campus culture**
+
+---
+
+## Project Team — Shadow
+
+| S.No | Name | Email ID | Role |
+|:----:|------|----------|------|
+| 1 | **Harshit Jaiswal** | 2301010397@krmu.edu.in | Leader |
+| 2 | Ashish Yadav | 2301010413@krmu.edu.in | Member |
+| 3 | Chetan Parmar | 2301010384@krmu.edu.in | Member |
+| 4 | Harsh Deo | 2301010386@krmu.edu.in | Member |
+
+---
+
+## License
+
+This project is developed solely for **academic purposes**. All rights reserved by Team Shadow, KRMU.
+
+---
+
+<div align="center">
+Made with love by <strong>Team Shadow</strong> · K.R. Mangalam University
+</div>
