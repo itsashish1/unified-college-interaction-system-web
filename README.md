@@ -1,6 +1,6 @@
 <div align="center">
 
-# Unified College Interaction System
+#  Unified College Interaction System
 
 **A centralized web platform bridging the gap between students, clubs, faculty, and administration.**
 
