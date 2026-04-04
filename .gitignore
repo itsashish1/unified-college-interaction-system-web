@@ -17,3 +17,5 @@ yarn-error.log*
 .svelte-kit/
 .env.*
 !.env.example
+
+.vercel

@@ -43,7 +43,7 @@ const Navbar = () => {
       <div className="navbar-brand">
         <Link to="/" onClick={() => setMobileMenuOpen(false)}>
           <GraduationCap size={28} color="var(--primary)" />
-          CollegeBook
+          CampusMate
         </Link>
       </div>
 

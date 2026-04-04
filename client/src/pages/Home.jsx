@@ -30,7 +30,7 @@ const Home = () => {
     <div className="home-dashboard animate-in">
       <section className="hero">
 
-        <h1>Welcome back to CollegeBook</h1>
+        <h1>Welcome back to CampusMate</h1>
         <p>Your centralized dashboard for college activities, discussions, and updates.</p>
         <div className="hero-actions">
           <Link to="/events" className="btn-secondary">

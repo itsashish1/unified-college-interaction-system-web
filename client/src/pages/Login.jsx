@@ -27,7 +27,7 @@ const Login = () => {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <h2>Login to CollegeBook</h2>
+        <h2>Login to CampusMate</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Email</label>

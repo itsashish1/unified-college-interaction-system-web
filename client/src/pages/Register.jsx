@@ -29,7 +29,7 @@ const Register = () => {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <h2>Register for CollegeBook</h2>
+        <h2>Register for CampusMate</h2>
         <form onSubmit={handleSubmit}>
           {['name', 'email', 'password', 'department', 'year', 'enrollmentNo'].map((field) => (
             <div className="form-group" key={field}>
