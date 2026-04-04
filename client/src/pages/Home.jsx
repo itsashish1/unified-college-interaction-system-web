@@ -92,11 +92,7 @@ const Home = () => {
             <p>Important updates from administration</p>
           </Link>
 
-          <Link to="/placements" className="quick-card">
-            <div className="quick-icon"><Briefcase size={24} /></div>
-            <h3>Career & Placements</h3>
-            <p>Browse internships and job opportunities</p>
-          </Link>
+
 
           <Link to="/support" className="quick-card">
             <div className="quick-icon"><HelpCircle size={24} /></div>
@@ -105,9 +101,8 @@ const Home = () => {
           </Link>
         </div>
       </section>
+      <UpcomingEventsReminder />
     </div>
-
-        <UpcomingEventsReminder />
   );
 };
 

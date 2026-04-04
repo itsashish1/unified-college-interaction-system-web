@@ -19,8 +19,6 @@ import Support from './pages/Support';
 import Profile from './pages/Profile';
 import NotFound from './pages/NotFound';
 import Search from './pages/Search';
-import Placements from './pages/Placements';
-
 function App() {
   return (
     <AuthProvider>
@@ -40,7 +38,6 @@ function App() {
             <Route path="/forum/:id" element={<PostDetail />} />
             <Route path="/faculty" element={<Faculty />} />
             <Route path="/announcements" element={<Announcements />} />
-            <Route path="/placements" element={<Placements />} />
             <Route path="/search" element={<Search />} />
             <Route
               path="/support"

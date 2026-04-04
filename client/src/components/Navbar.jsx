@@ -35,7 +35,6 @@ const Navbar = () => {
     { name: 'Forum', path: '/forum' },
     { name: 'Faculty', path: '/faculty' },
     { name: 'Notices', path: '/announcements' },
-    { name: 'Placements', path: '/placements' },
     { name: 'Support', path: '/support' },
   ];
 
