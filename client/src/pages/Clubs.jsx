@@ -38,7 +38,8 @@ const Clubs = () => {
   );
 
   return (
-    <div className="page-container">
+    <div className="page-container animate-in">
+
       <div className="module-hero">
         <h1>Clubs & Societies</h1>
         <p>Discover your passion, join communities, and participate in engaging activities.</p>
@@ -72,7 +73,8 @@ const Clubs = () => {
           <p>Loading clubs...</p>
         </div>
       ) : (
-        <div className="card-grid">
+        <div className="card-grid staggered-entry">
+
           {filteredClubs.map((club) => (
             <div key={club._id} className="module-card">
               <div className="card-banner bg-gradient-club">

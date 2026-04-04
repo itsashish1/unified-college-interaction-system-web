@@ -1,12 +1,27 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { GraduationCap, LogIn, UserPlus, LogOut, User, Menu, X } from 'lucide-react';
+import { GraduationCap, LogIn, UserPlus, LogOut, User, Menu, X, Search } from 'lucide-react';
+import SearchOverlay from './SearchOverlay';
 
 const Navbar = () => {
   const { user, logout } = useAuth();
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if ((e.key === 'k' && (e.metaKey || e.ctrlKey)) || e.key === '/') {
+        if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+          e.preventDefault();
+          setIsSearchOpen(true);
+        }
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   const handleLogout = () => {
     logout();
@@ -20,12 +35,12 @@ const Navbar = () => {
     { name: 'Forum', path: '/forum' },
     { name: 'Faculty', path: '/faculty' },
     { name: 'Notices', path: '/announcements' },
+    { name: 'Placements', path: '/placements' },
     { name: 'Support', path: '/support' },
-    { name: 'Search', path: '/search' },
   ];
 
   return (
-    <nav className="navbar">
+    <nav className="navbar glass">
       <div className="navbar-brand">
         <Link to="/" onClick={() => setMobileMenuOpen(false)}>
           <GraduationCap size={28} color="var(--primary)" />
@@ -33,8 +48,9 @@ const Navbar = () => {
         </Link>
       </div>
 
-      {/* Desktop Links */}
-      <ul className={`navbar-links ${mobileMenuOpen ? 'mobile-active' : ''}`}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flex: 1, justifyContent: 'flex-end' }}>
+        {/* Desktop Links */}
+        <ul className={`navbar-links ${mobileMenuOpen ? 'mobile-active' : ''}`}>
         {navLinks.map((link) => (
           <li key={link.path}>
             <Link 
@@ -86,10 +102,36 @@ const Navbar = () => {
         )}
       </div>
 
-      <button className="mobile-menu-toggle" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-        {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-      </button>
-    </nav>
+      <div className="navbar-actions">
+        <button 
+          className="search-toggle-btn" 
+          onClick={() => setIsSearchOpen(true)}
+          aria-label="Search"
+          style={{ 
+            background: 'rgba(26, 53, 91, 0.05)', 
+            border: 'none', 
+            width: '40px', 
+            height: '40px', 
+            borderRadius: '12px', 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center', 
+            color: 'var(--primary)',
+            cursor: 'pointer',
+            transition: 'all 0.2s'
+          }}
+        >
+          <Search size={20} />
+        </button>
+
+        <button className="mobile-menu-toggle" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+          {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
+      </div>
+    </div>
+
+    <SearchOverlay isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+  </nav>
   );
 };
 

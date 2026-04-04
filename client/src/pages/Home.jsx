@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import api from '../api/axios';
 import {
   Users, CalendarDays, MessageSquare, BookOpen, 
-  BellRing, HelpCircle, ArrowRight
+  BellRing, HelpCircle, Briefcase, ArrowRight
 } from 'lucide-react';
 
 const Home = () => {
@@ -26,8 +26,9 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="home-dashboard">
+    <div className="home-dashboard animate-in">
       <section className="hero">
+
         <h1>Welcome back to CollegeBook</h1>
         <p>Your centralized dashboard for college activities, discussions, and updates.</p>
         <div className="hero-actions">
@@ -37,8 +38,8 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="stats" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem', margin: '-4rem 2rem 3rem', position: 'relative', zIndex: 10 }}>
-        <div className="card" style={{ textAlign: 'center', padding: '1.5rem 1rem' }}>
+      <section className="stats staggered-entry" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem', margin: '-4rem 2rem 3rem', position: 'relative', zIndex: 10 }}>
+        <div className="card glass" style={{ textAlign: 'center', padding: '1.5rem 1rem' }}>
           <h3 style={{ fontSize: '2.5rem', marginBottom: '0.25rem' }}>{stats.clubs}</h3>
           <p style={{ fontWeight: 600 }}>Active Clubs</p>
         </div>
@@ -58,8 +59,9 @@ const Home = () => {
 
       <section className="quick-links">
         <h2>Quick Access</h2>
-        <div className="quick-grid">
+        <div className="quick-grid staggered-entry">
           <Link to="/clubs" className="quick-card">
+
             <div className="quick-icon"><Users size={24} /></div>
             <h3>Clubs & Societies</h3>
             <p>Join communities and track activities</p>
@@ -87,6 +89,12 @@ const Home = () => {
             <div className="quick-icon"><BellRing size={24} /></div>
             <h3>Official Notices</h3>
             <p>Important updates from administration</p>
+          </Link>
+
+          <Link to="/placements" className="quick-card">
+            <div className="quick-icon"><Briefcase size={24} /></div>
+            <h3>Career & Placements</h3>
+            <p>Browse internships and job opportunities</p>
           </Link>
 
           <Link to="/support" className="quick-card">

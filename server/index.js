@@ -13,6 +13,7 @@ import facultyRoutes from './routes/faculty.routes.js';
 import announcementRoutes from './routes/announcement.routes.js';
 import supportRoutes from './routes/support.routes.js';
 import searchRoutes from './routes/search.routes.js';
+import placementRoutes from './routes/placement.routes.js';
 
 dotenv.config();
 
@@ -34,6 +35,7 @@ app.use('/api/faculty', facultyRoutes);
 app.use('/api/announcements', announcementRoutes);
 app.use('/api/support', supportRoutes);
 app.use('/api/search', searchRoutes);
+app.use('/api/placements', placementRoutes);
 
 // Health check
 app.get('/', (req, res) => {

@@ -7,9 +7,16 @@ import Announcement from './models/Announcement.model.js';
 import Event from './models/Event.model.js';
 import Post from './models/Post.model.js';
 import SupportTicket from './models/SupportTicket.model.js';
+import Placement from './models/Placement.model.js';
 import fs from 'fs';
 
-dotenv.config();
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+dotenv.config({ path: path.join(__dirname, '.env') });
 
 const seedDB = async () => {
   try {
@@ -24,6 +31,7 @@ const seedDB = async () => {
     await Event.deleteMany();
     await Post.deleteMany();
     await SupportTicket.deleteMany();
+    await Placement.deleteMany();
 
     console.log('Creating Users...');
     const adminUser = await User.create({
@@ -31,7 +39,7 @@ const seedDB = async () => {
     });
 
     const student1 = await User.create({
-      name: 'Harshit Jaiswal', email: 'harshit@college.edu', password: 'password123', role: 'student', department: 'CSE', year: '3rd Year',
+      name: 'Harshit Jaiswal', email: 'harshit@college.edu', password: 'password123', role: 'club_admin', department: 'CSE', year: '3rd Year',
     });
     
     const student2 = await User.create({
@@ -109,6 +117,16 @@ const seedDB = async () => {
       { title: 'TCS Campus Placement Drive', content: 'TCS is visiting our campus next week. All 4th-year eligible students must register by Friday.', category: 'placement', priority: 'urgent', author: adminUser._id, isPinned: true },
       { title: 'Diwali Holidays Announced', content: 'The college will remain closed for Diwali celebrations from October 30 to November 3.', category: 'holiday', priority: 'low', author: adminUser._id },
       { title: 'Library Book Return Notice', content: 'Students are requested to return all overdue library books by the end of this week to avoid late fines.', category: 'academic', priority: 'medium', author: adminUser._id }
+    ]);
+
+    console.log('Creating Placements...');
+    const oneMonthLater = new Date();
+    oneMonthLater.setMonth(oneMonthLater.getMonth() + 1);
+    
+    await Placement.insertMany([
+      { company: 'Google', role: 'Software Engineering Intern', description: 'Work on cutting-edge technologies and help build products used by billions of people.', type: 'internship', location: 'Bangalore, India', packageStipend: '1,00,000 INR/month', eligibility: 'B.Tech CSE/IT, >8 CGPA', deadline: oneMonthLater, applyUrl: 'https://careers.google.com', postedBy: adminUser._id },
+      { company: 'Microsoft', role: 'SDE-1', description: 'Full-time software development engineer role focusing on Azure cloud services.', type: 'full-time', location: 'Hyderabad, India', packageStipend: '45 LPA', eligibility: 'Final year B.Tech, >7.5 CGPA', deadline: oneMonthLater, applyUrl: 'https://careers.microsoft.com', postedBy: adminUser._id },
+      { company: 'Amazon', role: 'Data Analyst Intern', description: 'Analyze large-scale data to provide actionable business insights.', type: 'internship', location: 'Remote', packageStipend: '80,000 INR/month', eligibility: 'B.Tech/M.Tech open, >7 CGPA', deadline: oneMonthLater, applyUrl: 'https://amazon.jobs', postedBy: adminUser._id },
     ]);
 
     console.log('Creating Forum Posts & Replies...');
