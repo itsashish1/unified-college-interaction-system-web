@@ -5,6 +5,7 @@ import {
   Users, CalendarDays, MessageSquare, BookOpen, 
   BellRing, HelpCircle, ArrowRight
 } from 'lucide-react';
+import UpcomingEventsReminder from '../components/UpcomingEventsReminder';
 
 const Home = () => {
   const [stats, setStats] = useState({ clubs: 0, events: 0, posts: 0, notices: 0 });
@@ -97,6 +98,8 @@ const Home = () => {
         </div>
       </section>
     </div>
+
+        <UpcomingEventsReminder />
   );
 };
 
