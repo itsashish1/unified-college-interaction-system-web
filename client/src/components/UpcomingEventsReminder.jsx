@@ -16,10 +16,10 @@ const UpcomingEventsReminder = () => {
         const today = new Date();
         const upcoming = response.data
           .filter(event => {
-            const eventDate = new Date(event.date);
+            const eventDate = new Date(event.startDate);
             return eventDate >= today;
           })
-          .sort((a, b) => new Date(a.date) - new Date(b.date))
+          .sort((a, b) => new Date(a.startDate) - new Date(b.startDate))
           .slice(0, 3);
         setUpcomingEvents(upcoming);
       } catch (error) {
