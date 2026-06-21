@@ -7,9 +7,9 @@
     "doc": "docs"
   },
   "scripts": {
-    "build": "npm --prefix client install && npm --prefix server install && npm --prefix client run build",
-    "start": "set NODE_ENV=production&& npm --prefix server start",
-    "dev": "start npm --prefix server run dev && start npm --prefix client run dev"
+    "build": "npm install --prefix client --include=dev && npm install --prefix server && npm run build --prefix client",
+    "start": "cross-env NODE_ENV=production npm run start --prefix server",
+    "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\""
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,11 @@
   },
   "homepage": "https://github.com/harshitj183/unified-college-interaction-system-web#readme",
   "dependencies": {
+    "cross-env": "^7.0.3",
     "nodemailer": "^8.0.9",
     "playwright": "^1.59.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
   }
 }
