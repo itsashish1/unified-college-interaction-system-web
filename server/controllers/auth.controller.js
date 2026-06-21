@@ -54,7 +54,11 @@ export const microsoftLogin = async (req, res) => {
     
     const clientID = process.env.MICROSOFT_CLIENT_ID;
     const clientSecret = process.env.MICROSOFT_CLIENT_SECRET;
-    const redirectURI = req.body.redirectUri || process.env.MICROSOFT_REDIRECT_URI || 'http://localhost:5173/auth/microsoft/callback';
+    // In production, always use the server-configured redirect URI to match Azure AD registration.
+    // In development, allow the frontend-supplied redirectUri for flexibility.
+    const redirectURI = process.env.NODE_ENV === 'production' 
+      ? (process.env.MICROSOFT_REDIRECT_URI || req.body.redirectUri)
+      : (req.body.redirectUri || process.env.MICROSOFT_REDIRECT_URI || 'http://localhost:5173/auth/microsoft/callback');
     const tenantID = process.env.MICROSOFT_TENANT_ID || 'common';
 
     if (!clientID || !clientSecret) {
