@@ -20,3 +20,12 @@ yarn-error.log*
 
 .vercel
 .env*
+
+# Temp/generated files
+tmp-chrome-profile*/
+nohup.out
+graphify-out/
+.agents/
+.claude/
+CLAUDE.md
+sendEmails.js

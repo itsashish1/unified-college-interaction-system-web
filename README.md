@@ -1,4 +1,4 @@
-<div align="center">
+n<div align="center">
 
 #  Unified College Interaction System
 
@@ -55,6 +55,56 @@ The **Unified College Interaction System** provides:
 | **Announcements** | Centralized digital notice board for official updates and deadlines |
 | **Global Search** | Search across clubs, events, faculty, and forum posts in one place |
 | **Support Tickets** | Users can raise support tickets; admins can manage and reply |
+
+---
+
+## Screenshots
+
+<p align="center">
+  <strong>CampusMate Home Dashboard</strong>
+</p>
+<p align="center">
+  <img src="docs/screenshots/01_home.png" alt="CampusMate home dashboard with platform statistics and quick-access modules" width="100%" />
+</p>
+
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <strong>Secure Login</strong><br /><br />
+      <img src="docs/screenshots/02_login.png" alt="CampusMate login page with email and Microsoft sign-in options" width="100%" />
+    </td>
+    <td width="50%" align="center">
+      <strong>Clubs &amp; Societies</strong><br /><br />
+      <img src="docs/screenshots/03_clubs.png" alt="CampusMate clubs and societies directory" width="100%" />
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <strong>Campus Events</strong><br /><br />
+      <img src="docs/screenshots/04_events.png" alt="CampusMate event discovery and registration page" width="100%" />
+    </td>
+    <td width="50%" align="center">
+      <strong>Discussion Forum</strong><br /><br />
+      <img src="docs/screenshots/05_forum.png" alt="CampusMate discussion forum with searchable topics" width="100%" />
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <strong>Faculty Directory</strong><br /><br />
+      <img src="docs/screenshots/06_faculty.png" alt="CampusMate searchable faculty directory" width="100%" />
+    </td>
+    <td width="50%" align="center">
+      <strong>Official Notice Board</strong><br /><br />
+      <img src="docs/screenshots/07_announcements.png" alt="CampusMate official notice board with categorized announcements" width="100%" />
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">
+      <strong>Study Resource Hub</strong><br /><br />
+      <img src="docs/screenshots/08_resources.png" alt="CampusMate study resource hub with department filters" width="50%" />
+    </td>
+  </tr>
+</table>
 
 ---
 
