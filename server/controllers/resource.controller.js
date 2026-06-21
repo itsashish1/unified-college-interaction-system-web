@@ -16,7 +16,9 @@ export const uploadResource = async (req, res) => {
       return res.status(400).json({ message: 'Resource file is required' });
     }
 
-    const fileUrl = `uploads/resources/${req.file.filename}`;
+    const fileUrl = process.env.VERCEL === '1' 
+      ? `/tmp/uploads/resources/${req.file.filename}` 
+      : `uploads/resources/${req.file.filename}`;
     const fileType = path.extname(req.file.originalname).substring(1).toLowerCase();
     const fileSize = req.file.size;
 
@@ -86,7 +88,9 @@ export const downloadResource = async (req, res) => {
     }
 
     // Resolve physical path
-    const physicalPath = path.join(__dirname, '..', resource.fileUrl);
+    const physicalPath = path.isAbsolute(resource.fileUrl)
+      ? resource.fileUrl
+      : path.join(__dirname, '..', resource.fileUrl);
 
     if (!fs.existsSync(physicalPath)) {
       return res.status(404).json({ message: 'Physical file not found on server' });
@@ -121,7 +125,9 @@ export const deleteResource = async (req, res) => {
     }
 
     // Physical file deletion
-    const physicalPath = path.join(__dirname, '..', resource.fileUrl);
+    const physicalPath = path.isAbsolute(resource.fileUrl)
+      ? resource.fileUrl
+      : path.join(__dirname, '..', resource.fileUrl);
     if (fs.existsSync(physicalPath)) {
       try {
         fs.unlinkSync(physicalPath);

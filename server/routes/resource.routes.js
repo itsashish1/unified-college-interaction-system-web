@@ -8,7 +8,7 @@ import { protect } from '../middleware/auth.middleware.js';
 import { validate } from '../middleware/validate.middleware.js';
 
 // Ensure directory exists on startup
-const uploadDir = 'uploads/resources';
+const uploadDir = process.env.VERCEL === '1' ? '/tmp/uploads/resources' : 'uploads/resources';
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir, { recursive: true });
 }
