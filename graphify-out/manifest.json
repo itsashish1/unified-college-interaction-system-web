@@ -1,0 +1,372 @@
+{
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/package.json": {
+    "mtime": 1778827858.0862894,
+    "ast_hash": "7add4a49fb4a55d67068240e16233e1b",
+    "semantic_hash": "7add4a49fb4a55d67068240e16233e1b"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/server/seed.js": {
+    "mtime": 1778828559.174554,
+    "ast_hash": "9ac8ab0731d83dadf87accd5a4e30148",
+    "semantic_hash": "9ac8ab0731d83dadf87accd5a4e30148"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/server/package.json": {
+    "mtime": 1775324545.0,
+    "ast_hash": "e743f6b1d22505330d2bb32a89c25797",
+    "semantic_hash": "e743f6b1d22505330d2bb32a89c25797"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/server/vercel.json": {
+    "mtime": 1775326494.0,
+    "ast_hash": "02cde0e211dc8e3f6edea31fd1e7f4bc",
+    "semantic_hash": "02cde0e211dc8e3f6edea31fd1e7f4bc"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/server/index.js": {
+    "mtime": 1778827858.0907235,
+    "ast_hash": "ca89cf5a28844ca0c55f17077d86e4fa",
+    "semantic_hash": "ca89cf5a28844ca0c55f17077d86e4fa"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/server/testSearchSystem.js": {
+    "mtime": 1776143760.0,
+    "ast_hash": "a76fc3b13ef5946eb145564ae7cb6c84",
+    "semantic_hash": "a76fc3b13ef5946eb145564ae7cb6c84"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/server/middleware/auth.middleware.js": {
+    "mtime": 1775324545.0,
+    "ast_hash": "58f4d7ac310b5af5458493941de66f35",
+    "semantic_hash": "58f4d7ac310b5af5458493941de66f35"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/server/models/User.model.js": {
+    "mtime": 1775324545.0,
+    "ast_hash": "e84e9790a4be280f0de7bdf11f7cd96d",
+    "semantic_hash": "e84e9790a4be280f0de7bdf11f7cd96d"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/server/models/Announcement.model.js": {
+    "mtime": 1775324545.0,
+    "ast_hash": "75d3682b4478844ceaf354e88e697e5e",
+    "semantic_hash": "75d3682b4478844ceaf354e88e697e5e"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/server/models/Faculty.model.js": {
+    "mtime": 1775324545.0,
+    "ast_hash": "e07f4aa4616198fc91aa01d20d0b9c07",
+    "semantic_hash": "e07f4aa4616198fc91aa01d20d0b9c07"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/server/models/Post.model.js": {
+    "mtime": 1775324545.0,
+    "ast_hash": "a6c651dfeb241c694e4d14d0b638ebb9",
+    "semantic_hash": "a6c651dfeb241c694e4d14d0b638ebb9"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/server/models/SupportTicket.model.js": {
+    "mtime": 1775324545.0,
+    "ast_hash": "af5d067b897a2dfa0e3f88e61f80530f",
+    "semantic_hash": "af5d067b897a2dfa0e3f88e61f80530f"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/server/models/Event.model.js": {
+    "mtime": 1775324545.0,
+    "ast_hash": "e04f44e160e7d2f8c27cfae3c6ccbe3d",
+    "semantic_hash": "e04f44e160e7d2f8c27cfae3c6ccbe3d"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/server/models/Club.model.js": {
+    "mtime": 1775324545.0,
+    "ast_hash": "86a1cfae172d3b47a2106b750ce0d822",
+    "semantic_hash": "86a1cfae172d3b47a2106b750ce0d822"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/server/controllers/forum.controller.js": {
+    "mtime": 1775324545.0,
+    "ast_hash": "240b802539a462bbbbd309067b339e7c",
+    "semantic_hash": "240b802539a462bbbbd309067b339e7c"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/server/controllers/faculty.controller.js": {
+    "mtime": 1775324545.0,
+    "ast_hash": "fe1cd614f6075d2bf2942892d1d69aae",
+    "semantic_hash": "fe1cd614f6075d2bf2942892d1d69aae"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/server/controllers/support.controller.js": {
+    "mtime": 1775324545.0,
+    "ast_hash": "45277396670e91b1c489b3f8a536c0b2",
+    "semantic_hash": "45277396670e91b1c489b3f8a536c0b2"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/server/controllers/announcement.controller.js": {
+    "mtime": 1775324545.0,
+    "ast_hash": "037be9ba21683127eeba4af80e604183",
+    "semantic_hash": "037be9ba21683127eeba4af80e604183"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/server/controllers/search.controller.js": {
+    "mtime": 1778828557.1665053,
+    "ast_hash": "4ce2a6d424df3f7fee10e90530f826a6",
+    "semantic_hash": "4ce2a6d424df3f7fee10e90530f826a6"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/server/controllers/auth.controller.js": {
+    "mtime": 1775324545.0,
+    "ast_hash": "ca29b28caeb23081a46f9856c308c0c1",
+    "semantic_hash": "ca29b28caeb23081a46f9856c308c0c1"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/server/controllers/event.controller.js": {
+    "mtime": 1775324545.0,
+    "ast_hash": "363d4718a8ef55d7e97027f69cb67999",
+    "semantic_hash": "363d4718a8ef55d7e97027f69cb67999"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/server/controllers/club.controller.js": {
+    "mtime": 1775324545.0,
+    "ast_hash": "5836d23b2794544dede36597039760e7",
+    "semantic_hash": "5836d23b2794544dede36597039760e7"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/server/routes/search.routes.js": {
+    "mtime": 1775324545.0,
+    "ast_hash": "e68d88e107f5fda41418a58c26ac45a7",
+    "semantic_hash": "e68d88e107f5fda41418a58c26ac45a7"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/server/routes/support.routes.js": {
+    "mtime": 1775324545.0,
+    "ast_hash": "abd219c6f2ac6a9caf16febf9224ca8a",
+    "semantic_hash": "abd219c6f2ac6a9caf16febf9224ca8a"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/server/routes/announcement.routes.js": {
+    "mtime": 1775324545.0,
+    "ast_hash": "c390e9accd098a6db900e4ada6346b09",
+    "semantic_hash": "c390e9accd098a6db900e4ada6346b09"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/server/routes/forum.routes.js": {
+    "mtime": 1775324545.0,
+    "ast_hash": "32214a693fb8cf774331ab89c7cb2441",
+    "semantic_hash": "32214a693fb8cf774331ab89c7cb2441"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/server/routes/auth.routes.js": {
+    "mtime": 1775324545.0,
+    "ast_hash": "6cbbe95be4e4e80151aa7092e270542c",
+    "semantic_hash": "6cbbe95be4e4e80151aa7092e270542c"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/server/routes/user.routes.js": {
+    "mtime": 1775324545.0,
+    "ast_hash": "ac542757c79a7100519fd13fa576b37b",
+    "semantic_hash": "ac542757c79a7100519fd13fa576b37b"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/server/routes/faculty.routes.js": {
+    "mtime": 1775324545.0,
+    "ast_hash": "ce555cbeda608fe43936b8ba10f9e624",
+    "semantic_hash": "ce555cbeda608fe43936b8ba10f9e624"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/server/routes/event.routes.js": {
+    "mtime": 1775324545.0,
+    "ast_hash": "af5d90c35ed1eecfbad7c7c9d54b92db",
+    "semantic_hash": "af5d90c35ed1eecfbad7c7c9d54b92db"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/server/routes/club.routes.js": {
+    "mtime": 1775324545.0,
+    "ast_hash": "5e8e8d5f4bb5231ae8281be8e0e8fd0c",
+    "semantic_hash": "5e8e8d5f4bb5231ae8281be8e0e8fd0c"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/package.json": {
+    "mtime": 1775324543.0,
+    "ast_hash": "15aac81fde9cf196dc8e26f33706a4e0",
+    "semantic_hash": "15aac81fde9cf196dc8e26f33706a4e0"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/vercel.json": {
+    "mtime": 1775326485.0,
+    "ast_hash": "6411d2fbb5f0e00aaff0ca0ded84e0b6",
+    "semantic_hash": "6411d2fbb5f0e00aaff0ca0ded84e0b6"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/eslint.config.js": {
+    "mtime": 1775324543.0,
+    "ast_hash": "49c8473bcfcec3aef596a5fb04a6df06",
+    "semantic_hash": "49c8473bcfcec3aef596a5fb04a6df06"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/vite.config.js": {
+    "mtime": 1775324543.0,
+    "ast_hash": "88439104b3c207f17d33ef3160e3b080",
+    "semantic_hash": "88439104b3c207f17d33ef3160e3b080"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/src/App.jsx": {
+    "mtime": 1778827858.0907235,
+    "ast_hash": "0346e97080dc6422b3ce86688e1ac4ec",
+    "semantic_hash": "0346e97080dc6422b3ce86688e1ac4ec"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/src/main.jsx": {
+    "mtime": 1775324543.0,
+    "ast_hash": "253d4db42a0b217629b29497cec5becb",
+    "semantic_hash": "253d4db42a0b217629b29497cec5becb"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/src/context/AuthContext.jsx": {
+    "mtime": 1775324544.0,
+    "ast_hash": "1669d6c6ec09529b03dad30a04aee2be",
+    "semantic_hash": "1669d6c6ec09529b03dad30a04aee2be"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/src/pages/EventDetail.jsx": {
+    "mtime": 1775324544.0,
+    "ast_hash": "1affff2253aa93d757919017e73fe21a",
+    "semantic_hash": "1affff2253aa93d757919017e73fe21a"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/src/pages/Support.jsx": {
+    "mtime": 1775324544.0,
+    "ast_hash": "bb77016c8f149b7d255fe7a3bb1c1ffb",
+    "semantic_hash": "bb77016c8f149b7d255fe7a3bb1c1ffb"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/src/pages/Clubs.jsx": {
+    "mtime": 1775324544.0,
+    "ast_hash": "ad020c4b3046adaf0c6a0ccb978223fb",
+    "semantic_hash": "ad020c4b3046adaf0c6a0ccb978223fb"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/src/pages/NotFound.jsx": {
+    "mtime": 1775324544.0,
+    "ast_hash": "459871410c7f432d1dba57a2060cf2fa",
+    "semantic_hash": "459871410c7f432d1dba57a2060cf2fa"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/src/pages/Search.jsx": {
+    "mtime": 1776139045.0,
+    "ast_hash": "1cd5a52102fec28c2e5d3c195f10c050",
+    "semantic_hash": "1cd5a52102fec28c2e5d3c195f10c050"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/src/pages/ClubDetail.jsx": {
+    "mtime": 1775324544.0,
+    "ast_hash": "897da3470da0cbd8a5d9af4454ed5d69",
+    "semantic_hash": "897da3470da0cbd8a5d9af4454ed5d69"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/src/pages/Register.jsx": {
+    "mtime": 1775327148.0,
+    "ast_hash": "176d3cc0b3fb98e2df2e739d95767d09",
+    "semantic_hash": "176d3cc0b3fb98e2df2e739d95767d09"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/src/pages/Home.jsx": {
+    "mtime": 1775327152.0,
+    "ast_hash": "62bd41e0132af0ce472f2e87420451df",
+    "semantic_hash": "62bd41e0132af0ce472f2e87420451df"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/src/pages/Forum.jsx": {
+    "mtime": 1775324544.0,
+    "ast_hash": "6d3f1ea2862b495626f3c32138aadfb8",
+    "semantic_hash": "6d3f1ea2862b495626f3c32138aadfb8"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/src/pages/Faculty.jsx": {
+    "mtime": 1775324544.0,
+    "ast_hash": "68da1700c7d71c68a5fc77a39e706ffe",
+    "semantic_hash": "68da1700c7d71c68a5fc77a39e706ffe"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/src/pages/Announcements.jsx": {
+    "mtime": 1775324544.0,
+    "ast_hash": "a63413f7abeb33afbb80ac1f87ea8a76",
+    "semantic_hash": "a63413f7abeb33afbb80ac1f87ea8a76"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/src/pages/Profile.jsx": {
+    "mtime": 1775324544.0,
+    "ast_hash": "4e37a155f0766269903c0e7aa681ad7b",
+    "semantic_hash": "4e37a155f0766269903c0e7aa681ad7b"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/src/pages/Events.jsx": {
+    "mtime": 1775324544.0,
+    "ast_hash": "326de9f230d38c697fbd5fda32d01a91",
+    "semantic_hash": "326de9f230d38c697fbd5fda32d01a91"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/src/pages/PostDetail.jsx": {
+    "mtime": 1775324544.0,
+    "ast_hash": "c8f0395fdaea72cefd045efc6f68f476",
+    "semantic_hash": "c8f0395fdaea72cefd045efc6f68f476"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/src/pages/Login.jsx": {
+    "mtime": 1775327150.0,
+    "ast_hash": "480936afa64a3ea0aaa9c5ad09ac45b8",
+    "semantic_hash": "480936afa64a3ea0aaa9c5ad09ac45b8"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/src/api/axios.js": {
+    "mtime": 1775324543.0,
+    "ast_hash": "ee39d87832a06501de20c9b001a1381a",
+    "semantic_hash": "ee39d87832a06501de20c9b001a1381a"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/src/components/Navbar.jsx": {
+    "mtime": 1778827858.0892894,
+    "ast_hash": "60fe5c6a07b076898e3561df3f1d061e",
+    "semantic_hash": "60fe5c6a07b076898e3561df3f1d061e"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/src/components/ProtectedRoute.jsx": {
+    "mtime": 1775324543.0,
+    "ast_hash": "cb60df9ae70496d822a71678bd0b3fe9",
+    "semantic_hash": "cb60df9ae70496d822a71678bd0b3fe9"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/src/components/SearchOverlay.jsx": {
+    "mtime": 1776139087.0,
+    "ast_hash": "9f55a61b0877d3efb409e75d805ad61c",
+    "semantic_hash": "9f55a61b0877d3efb409e75d805ad61c"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/src/components/UpcomingEventsReminder.jsx": {
+    "mtime": 1775408832.0,
+    "ast_hash": "3aec1d83f3e9777ac38d05cbc8e8af2c",
+    "semantic_hash": "3aec1d83f3e9777ac38d05cbc8e8af2c"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/README.md": {
+    "mtime": 1775409356.0,
+    "ast_hash": "427fca35343a63d3b759173a9eecf19e",
+    "semantic_hash": "427fca35343a63d3b759173a9eecf19e"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/CLAUDE.md": {
+    "mtime": 1778828277.4032137,
+    "ast_hash": "2a0cb472a51286d249de462855cd362e",
+    "semantic_hash": "2a0cb472a51286d249de462855cd362e"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/README.md": {
+    "mtime": 1775324543.0,
+    "ast_hash": "a28dc4cb878325f3e9e5649f3e1469ac",
+    "semantic_hash": "a28dc4cb878325f3e9e5649f3e1469ac"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/index.html": {
+    "mtime": 1775327156.0,
+    "ast_hash": "7184f3b7c294239d9b14ffa1117abbff",
+    "semantic_hash": "7184f3b7c294239d9b14ffa1117abbff"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/docs/synopsis_report.pdf": {
+    "mtime": 1775324544.0,
+    "ast_hash": "a0f96d32a42bd9ee5078a1d3b7b3aa7c",
+    "semantic_hash": "a0f96d32a42bd9ee5078a1d3b7b3aa7c"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/docs/presentation_ppt.pdf": {
+    "mtime": 1775324544.0,
+    "ast_hash": "c20d3f6b91d6dc67e624342d51b89b27",
+    "semantic_hash": "c20d3f6b91d6dc67e624342d51b89b27"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/server/data.pdf": {
+    "mtime": 1775324544.0,
+    "ast_hash": "a9a84e35c781bc5456c1de52bbcd44d4",
+    "semantic_hash": "a9a84e35c781bc5456c1de52bbcd44d4"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/public/favicon.svg": {
+    "mtime": 1775324543.0,
+    "ast_hash": "7e840862161341271697daa99a40d76b",
+    "semantic_hash": "7e840862161341271697daa99a40d76b"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/public/icons.svg": {
+    "mtime": 1775324543.0,
+    "ast_hash": "3b4fcfcf393eca4d264dca4a4663bc37",
+    "semantic_hash": "3b4fcfcf393eca4d264dca4a4663bc37"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/public/images/default-club.jpg": {
+    "mtime": 1775324543.0,
+    "ast_hash": "1fe6df26b8a465d479befb26b27ce6be",
+    "semantic_hash": "1fe6df26b8a465d479befb26b27ce6be"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/public/images/default-avatar.jpg": {
+    "mtime": 1775324543.0,
+    "ast_hash": "722ddd92f44266396f0bdaf02010b22e",
+    "semantic_hash": "722ddd92f44266396f0bdaf02010b22e"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/public/images/default-event.jpg": {
+    "mtime": 1775324543.0,
+    "ast_hash": "196ec4e427790f5984343e06a4039b4e",
+    "semantic_hash": "196ec4e427790f5984343e06a4039b4e"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/public/images/hero-banner.jpg": {
+    "mtime": 1775324543.0,
+    "ast_hash": "eaa6e634d4e49418f743f50c96a98268",
+    "semantic_hash": "eaa6e634d4e49418f743f50c96a98268"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/src/assets/hero.png": {
+    "mtime": 1775324543.0,
+    "ast_hash": "5cf2b0762834cdddc0dd3ec1397b5011",
+    "semantic_hash": "5cf2b0762834cdddc0dd3ec1397b5011"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/src/assets/vite.svg": {
+    "mtime": 1775324543.0,
+    "ast_hash": "9960a24288958394ac50e57ff638b036",
+    "semantic_hash": "9960a24288958394ac50e57ff638b036"
+  },
+  "/home/harshitj183/Downloads/unified-college-interaction-system-web/client/src/assets/react.svg": {
+    "mtime": 1775324543.0,
+    "ast_hash": "f0402b67b6ce880f65666bb49e841696",
+    "semantic_hash": "f0402b67b6ce880f65666bb49e841696"
+  }
+}

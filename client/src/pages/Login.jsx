@@ -25,9 +25,9 @@ const Login = () => {
   };
 
   const handleMicrosoftLogin = () => {
-    const clientId = import.meta.env.VITE_MICROSOFT_CLIENT_ID;
-    const redirectUri = import.meta.env.VITE_MICROSOFT_REDIRECT_URI || `${window.location.origin}/auth/microsoft/callback`;
-    const tenantId = import.meta.env.VITE_MICROSOFT_TENANT_ID || 'common';
+    const clientId = import.meta.env.VITE_MICROSOFT_CLIENT_ID || 'e2196c5d-8ca1-4583-bbef-f82aa236d314';
+    const redirectUri = `${window.location.origin}/auth/microsoft/callback`;
+    const tenantId = import.meta.env.VITE_MICROSOFT_TENANT_ID || '38fd5a4b-955f-455a-9ad2-d2daa5a4e4d0';
     
     if (!clientId) {
       toast.error('Microsoft login client ID is not configured');
