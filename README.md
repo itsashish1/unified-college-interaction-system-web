@@ -8,6 +8,9 @@ n<div align="center">
 [![Stack](https://img.shields.io/badge/Stack-MERN-green?style=flat-square)](.)
 [![Team](https://img.shields.io/badge/Team-Shadow-purple?style=flat-square)](.)
 [![License](https://img.shields.io/badge/License-Academic%20Use%20Only-orange?style=flat-square)](.)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=flat-square&logo=vercel)](https://unified-college-interaction-system.vercel.app/)
+
+**🚀 Live Demo: [unified-college-interaction-system.vercel.app](https://unified-college-interaction-system.vercel.app/)**
 
 </div>
 ---
