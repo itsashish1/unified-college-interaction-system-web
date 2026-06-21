@@ -20,6 +20,7 @@ import facultyRoutes from './routes/faculty.routes.js';
 import announcementRoutes from './routes/announcement.routes.js';
 import supportRoutes from './routes/support.routes.js';
 import searchRoutes from './routes/search.routes.js';
+import resourceRoutes from './routes/resource.routes.js';
 dotenv.config();
 
 const app = express();
@@ -65,9 +66,14 @@ app.use('/api/faculty', facultyRoutes);
 app.use('/api/announcements', announcementRoutes);
 app.use('/api/support', supportRoutes);
 app.use('/api/search', searchRoutes);
+app.use('/api/resources', resourceRoutes);
+
 // Serve Frontend in Production
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+// Serve static uploads
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 if (process.env.NODE_ENV === 'production') {
   const clientBuildPath = path.join(__dirname, '../client/dist');

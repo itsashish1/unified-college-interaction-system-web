@@ -1,18 +1,20 @@
 import Event from '../models/Event.model.js';
+import { paginate } from '../utils/paginate.js';
 
 // GET /api/events
 export const getEvents = async (req, res) => {
   try {
-    const { status, category, club } = req.query;
+    const { status, category, club, page, limit } = req.query;
     const filter = { isPublished: true };
     if (status) filter.status = status;
     if (category) filter.category = category;
     if (club) filter.club = club;
-    const events = await Event.find(filter)
+    const query = Event.find(filter)
       .populate('organizer', 'name email')
       .populate('club', 'name logo')
       .sort({ startDate: 1 });
-    res.json(events);
+    const result = await paginate(query, { page, limit });
+    res.json(result);
   } catch (err) { res.status(500).json({ message: err.message }); }
 };
 
@@ -31,7 +33,12 @@ export const getEvent = async (req, res) => {
 // POST /api/events
 export const createEvent = async (req, res) => {
   try {
-    const event = await Event.create({ ...req.body, organizer: req.user._id });
+    const { title, description, category, club, venue, startDate, endDate, maxParticipants, registrationDeadline, image } = req.body;
+    const event = await Event.create({
+      title, description, category, club, venue, startDate, endDate,
+      maxParticipants, registrationDeadline, image,
+      organizer: req.user._id,
+    });
     res.status(201).json(event);
   } catch (err) { res.status(500).json({ message: err.message }); }
 };
@@ -48,7 +55,8 @@ export const updateEvent = async (req, res) => {
 // DELETE /api/events/:id
 export const deleteEvent = async (req, res) => {
   try {
-    await Event.findByIdAndDelete(req.params.id);
+    const event = await Event.findByIdAndDelete(req.params.id);
+    if (!event) return res.status(404).json({ message: 'Event not found' });
     res.json({ message: 'Event deleted successfully' });
   } catch (err) { res.status(500).json({ message: err.message }); }
 };

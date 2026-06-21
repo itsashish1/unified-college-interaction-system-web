@@ -24,7 +24,7 @@ const Events = () => {
     try {
       setLoading(true);
       const { data } = await api.get('/events', { params: status ? { status } : {} });
-      setEvents(data);
+      setEvents(data.data || data);
     } catch { toast.error('Failed to load events'); }
     finally { setLoading(false); }
   };
@@ -32,11 +32,12 @@ const Events = () => {
   const fetchClubs = async () => {
     try {
       const { data } = await api.get('/clubs');
+      const clubsData = data.data || data;
       // If club_admin, only show clubs they coordinate
       if (user?.role === 'club_admin') {
-        setClubs(data.filter(c => c.coordinator?._id === user._id || c.coordinator === user._id));
+        setClubs(clubsData.filter(c => c.coordinator?._id === user._id || c.coordinator === user._id));
       } else {
-        setClubs(data);
+        setClubs(clubsData);
       }
     } catch { toast.error('Failed to load clubs'); }
   };

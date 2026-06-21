@@ -1,209 +1,175 @@
-import React, { useEffect, useState } from 'react';
-import { Lightbulb, TrendingUp, Search as SearchIcon, Globe, Database, Loader2, Users, Calendar, MessageSquare, Briefcase, ChevronRight } from 'lucide-react';
-import api from '../api/axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
+import { Search as SearchIcon, Loader2, Globe, ExternalLink } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './Search.css';
 
+const GOOGLE_CSE_CX = '03ba70a97049b46f6';
+
 const Search = () => {
-  const [activeTab, setActiveTab] = useState('internal'); // 'internal' or 'external'
   const [searchQuery, setSearchQuery] = useState('');
-  const [internalResults, setInternalResults] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [cseReady, setCseReady] = useState(false);
+  const cseContainerRef = useRef(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
-  // Internal Search Logic
-  const handleInternalSearch = async (e) => {
-    e?.preventDefault();
-    if (searchQuery.trim().length < 2) return;
-
-    try {
-      setLoading(true);
-      const { data } = await api.get(`/search?q=${searchQuery}`);
-      setInternalResults(data);
-    } catch (err) {
-      console.error('Internal search failed', err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Google CSE Logic (maintained for External tab)
+  // Load query from URL on mount
   useEffect(() => {
-    if (activeTab === 'external') {
-      const cx = '03ba70a97049b46f6';
-      const container = document.getElementById('google-cse-container');
-      if (container) {
-        container.innerHTML = '<div class="gcse-search"></div>';
-      }
+    const params = new URLSearchParams(location.search);
+    const q = params.get('q');
+    if (q) {
+      setSearchQuery(q);
+      performSearch(q);
+    }
+  }, [location.search]);
 
-      const scriptId = 'google-cse-script';
-      let existingScript = document.getElementById(scriptId);
-      if (existingScript) existingScript.remove();
+  // Google CSE Initialization
+  useEffect(() => {
+    const scriptId = 'google-cse-script';
 
+    // Set the callback BEFORE loading the script
+    window.__gcse = window.__gcse || {};
+    window.__gcse.parsetags = 'explicit';
+    window.__gcse.callback = () => {
+      setCseReady(true);
+    };
+
+    if (!document.getElementById(scriptId)) {
       const script = document.createElement('script');
       script.id = scriptId;
-      script.src = `https://cse.google.com/cse.js?cx=${cx}`;
+      script.src = `https://cse.google.com/cse.js?cx=${GOOGLE_CSE_CX}`;
       script.async = true;
-      script.onload = () => {
-        setTimeout(() => {
-          if (window.google?.search?.cse) {
-            window.google.search.cse.element.go();
-          }
-        }, 300);
-      };
       document.head.appendChild(script);
+    } else {
+      // Script already loaded from previous mount
+      if (window.google?.search?.cse) setCseReady(true);
     }
-  }, [activeTab]);
 
-  const renderInternalResults = () => {
-    if (!internalResults) return (
-      <div className="search-placeholder-main">
-        <Database size={64} opacity={0.1} />
-        <p>Search campus database for clubs, events, and people.</p>
-      </div>
-    );
+    return () => {
+      // Cleanup: reset callback
+      if (window.__gcse) window.__gcse.callback = null;
+    };
+  }, []);
 
-    const hasResults = Object.values(internalResults).some(arr => arr.length > 0);
+  // Render CSE element when ready
+  useEffect(() => {
+    if (cseReady && cseContainerRef.current) {
+      // Clear previous content
+      cseContainerRef.current.innerHTML = '';
 
-    if (!hasResults) return (
-      <div className="search-empty-main">
-        <h3>No campus records found</h3>
-        <p>We couldn't find any results for "<strong>{searchQuery}</strong>" in our internal database.</p>
-        <button onClick={() => setActiveTab('external')} className="btn-secondary" style={{ marginTop: '1rem' }}>
-          Try External Web Search
-        </button>
-      </div>
-    );
+      // Create the search element
+      const div = document.createElement('div');
+      div.className = 'gcse-searchresults-only';
+      div.setAttribute('data-queryParameterName', 'q');
+      cseContainerRef.current.appendChild(div);
 
-    return (
-      <div className="internal-results-grid">
-        {/* Simplified display for the main search page */}
-        {internalResults.clubs?.length > 0 && (
-          <div className="result-group">
-            <h3><Users size={18} /> Clubs ({internalResults.clubs.length})</h3>
-            <div className="result-list">
-              {internalResults.clubs.map(club => (
-                <div key={club._id} className="search-result-card" onClick={() => navigate(`/clubs/${club._id}`)}>
-                  <div className="card-mini-icon">{club.name.charAt(0)}</div>
-                  <div className="card-info">
-                    <h4>{club.name}</h4>
-                    <p>{club.category} • {club.description?.substring(0, 60)}...</p>
-                  </div>
-                  <ChevronRight size={18} />
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+      // Render the CSE element
+      if (window.google?.search?.cse?.element) {
+        window.google.search.cse.element.render({
+          div: div,
+          tag: 'searchresults-only',
+        });
+      }
+    }
+  }, [cseReady]);
 
-        {internalResults.events?.length > 0 && (
-          <div className="result-group">
-            <h3><Calendar size={18} /> Events ({internalResults.events.length})</h3>
-            <div className="result-list">
-              {internalResults.events.map(event => (
-                <div key={event._id} className="search-result-card" onClick={() => navigate(`/events/${event._id}`)}>
-                  <div className="card-mini-icon bg-blue">{new Date(event.startDate).getDate()}</div>
-                  <div className="card-info">
-                    <h4>{event.title}</h4>
-                    <p>{event.venue} • {new Date(event.startDate).toLocaleDateString()}</p>
-                  </div>
-                  <ChevronRight size={18} />
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+  // Execute CSE search when query changes
+  const executeCseSearch = useCallback((query) => {
+    if (!cseReady || !query) return;
 
-        {internalResults.faculty?.length > 0 && (
-          <div className="result-group">
-            <h3><Briefcase size={18} /> Faculty ({internalResults.faculty.length})</h3>
-            <div className="result-list">
-              {internalResults.faculty.map(f => (
-                <div key={f._id} className="search-result-card" onClick={() => navigate(`/faculty`)}>
-                  <div className="card-mini-icon bg-green">{f.name.charAt(0)}</div>
-                  <div className="card-info">
-                    <h4>{f.name}</h4>
-                    <p>{f.designation} • {f.department}</p>
-                  </div>
-                  <ChevronRight size={18} />
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
-    );
+    // Method 1: Use element API
+    try {
+      const element = window.google?.search?.cse?.element?.getElement('searchresults-only0')
+        || window.google?.search?.cse?.element?.getAllElements()?.searchresults?.[0];
+
+      if (element) {
+        element.execute(query);
+        return;
+      }
+    } catch (e) {
+      // fallback below
+    }
+
+    // Method 2: Re-render with query
+    if (cseContainerRef.current) {
+      cseContainerRef.current.innerHTML = '';
+      const div = document.createElement('div');
+      div.className = 'gcse-searchresults-only';
+      div.setAttribute('data-as_q', query);
+      cseContainerRef.current.appendChild(div);
+      if (window.google?.search?.cse?.element) {
+        window.google.search.cse.element.go(cseContainerRef.current);
+      }
+    }
+  }, [cseReady]);
+
+  const performSearch = (query) => {
+    if (!query || query.trim().length < 2) return;
+    executeCseSearch(query);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
+    }
   };
 
   return (
     <div className="page-container search-page">
-      <section className="search-hero">
-        <div className="search-hero-content">
-          <h1>Campus Knowledge Engine</h1>
-          <p>Find everything from academic documents to student clubs and event schedules.</p>
-          
-          <form className="main-search-bar" onSubmit={handleInternalSearch}>
-            <SearchIcon size={20} className="bar-icon" />
-            <input 
-              type="text" 
-              placeholder="Search across all modules..." 
+      <section className="unified-search-header">
+        <div className="header-bg"></div>
+        <div className="header-content">
+          <h1>What can we help you find?</h1>
+          <form className="unified-search-bar" onSubmit={handleSubmit}>
+            <SearchIcon size={22} className="bar-icon" />
+            <input
+              type="text"
+              placeholder="Search the web..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
+              id="unified-search-input"
             />
-            <button type="submit" disabled={loading}>
-              {loading ? <Loader2 size={18} className="animate-spin" /> : 'Search'}
+            <button type="submit" id="unified-search-btn">
+              Search
             </button>
           </form>
+          <div className="search-mode-indicator">
+            <Globe size={14} /> Google Custom Search Engine
+          </div>
         </div>
       </section>
 
-      <div className="search-tabs">
-        <button 
-          className={`search-tab ${activeTab === 'internal' ? 'active' : ''}`}
-          onClick={() => setActiveTab('internal')}
-        >
-          <Database size={18} /> Campus Database
-        </button>
-        <button 
-          className={`search-tab ${activeTab === 'external' ? 'active' : ''}`}
-          onClick={() => setActiveTab('external')}
-        >
-          <Globe size={18} /> External Web
-        </button>
-      </div>
-      
-      <div className="search-layout">
-        <div className="search-main">
-          {activeTab === 'internal' ? (
-            <div className="internal-container">
-              {renderInternalResults()}
-            </div>
-          ) : (
-            <div className="search-container" id="google-cse-container">
-              <div className="gcse-search"></div>
+      <div className="web-results-container" style={{ maxWidth: '1000px', margin: '0 auto 3rem' }}>
+        {/* Google CSE Web Results */}
+        <main className="web-results-main" style={{ minHeight: '60vh' }}>
+          <div className="web-results-header">
+            <Globe size={18} />
+            <h3>Web & External Resources</h3>
+            <a
+              href={`https://cse.google.com/cse?cx=${GOOGLE_CSE_CX}#gsc.q=${encodeURIComponent(searchQuery)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cse-external-link"
+              title="Open in Google Custom Search"
+            >
+              <ExternalLink size={14} /> Open in Google
+            </a>
+          </div>
+          <div className="search-container integrated" id="google-cse-container" ref={cseContainerRef}>
+            {!cseReady && (
+              <div className="cse-loading">
+                <Loader2 size={24} className="animate-spin" />
+                <p>Loading Google Search Engine...</p>
+              </div>
+            )}
+          </div>
+          {cseReady && !searchQuery && (
+            <div className="cse-placeholder">
+              <Globe size={48} className="fade-icon" />
+              <p>Enter a search query to find web results from your college network</p>
             </div>
           )}
-        </div>
-
-        <aside className="search-sidebar">
-          <div className="search-tips-card">
-            <h3><Lightbulb size={20} /> Search Tips</h3>
-            <ul>
-              <li>Use <strong>"quotes"</strong> for exact matches</li>
-              <li>Type <strong>ext:pdf</strong> for documents</li>
-              <li>Include <strong>department names</strong></li>
-            </ul>
-          </div>
-          
-          <div className="search-tips-card">
-            <h3><TrendingUp size={20} /> Hot Topics</h3>
-            <div className="popular-tags">
-              <span className="tag" onClick={() => setSearchQuery('Tech Fest')}>Tech Fest</span>
-              <span className="tag" onClick={() => setSearchQuery('Library')}>Library</span>
-              <span className="tag" onClick={() => setSearchQuery('Placement')}>Placement</span>
-            </div>
-          </div>
-        </aside>
+        </main>
       </div>
     </div>
   );

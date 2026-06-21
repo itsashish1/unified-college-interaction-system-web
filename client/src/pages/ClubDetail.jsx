@@ -23,7 +23,7 @@ const ClubDetail = () => {
   const fetchClubEvents = async () => {
     try {
       const { data } = await api.get(`/events?club=${id}`);
-      setEvents(data);
+      setEvents(data.data || data);
     } catch { /* some clubs have no events */ }
   };
 

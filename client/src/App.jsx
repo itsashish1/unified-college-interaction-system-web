@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import MicrosoftCallback from './pages/MicrosoftCallback';
 import Clubs from './pages/Clubs';
 import ClubDetail from './pages/ClubDetail';
 import Events from './pages/Events';
@@ -19,6 +20,8 @@ import Support from './pages/Support';
 import Profile from './pages/Profile';
 import NotFound from './pages/NotFound';
 import Search from './pages/Search';
+import Resources from './pages/Resources';
+
 function App() {
   return (
     <AuthProvider>
@@ -28,7 +31,10 @@ function App() {
         <main className="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
+
+            
             <Route path="/login" element={<Login />} />
+            <Route path="/auth/microsoft/callback" element={<MicrosoftCallback />} />
             <Route path="/register" element={<Register />} />
             <Route path="/clubs" element={<Clubs />} />
             <Route path="/clubs/:id" element={<ClubDetail />} />
@@ -39,6 +45,7 @@ function App() {
             <Route path="/faculty" element={<Faculty />} />
             <Route path="/announcements" element={<Announcements />} />
             <Route path="/search" element={<Search />} />
+            <Route path="/resources" element={<Resources />} />
             <Route
               path="/support"
               element={<ProtectedRoute><Support /></ProtectedRoute>}

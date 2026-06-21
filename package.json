@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/harshitj183/unified-college-interaction-system-web#readme",
   "dependencies": {
+    "nodemailer": "^8.0.9",
     "playwright": "^1.59.1"
   }
 }

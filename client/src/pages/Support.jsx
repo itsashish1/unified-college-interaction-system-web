@@ -19,7 +19,7 @@ const Support = () => {
     try {
       setLoading(true);
       const { data } = await api.get('/support');
-      setTickets(data);
+      setTickets(data.data || data);
     } catch {
       toast.error('Failed to load tickets');
     } finally {

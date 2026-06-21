@@ -15,7 +15,7 @@ const Clubs = () => {
   const fetchClubs = async () => {
     try {
       const { data } = await api.get('/clubs', { params: category ? { category } : {} });
-      setClubs(data);
+      setClubs(data.data || data);
     } catch { toast.error('Failed to load clubs'); }
     finally { setLoading(false); }
   };

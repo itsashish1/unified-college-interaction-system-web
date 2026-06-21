@@ -1,13 +1,15 @@
 import Club from '../models/Club.model.js';
+import { paginate } from '../utils/paginate.js';
 
 // GET /api/clubs
 export const getClubs = async (req, res) => {
   try {
-    const { category } = req.query;
+    const { category, page, limit } = req.query;
     const filter = { isActive: true };
     if (category) filter.category = category;
-    const clubs = await Club.find(filter).populate('coordinator', 'name email').sort({ createdAt: -1 });
-    res.json(clubs);
+    const query = Club.find(filter).populate('coordinator', 'name email').sort({ createdAt: -1 });
+    const result = await paginate(query, { page, limit });
+    res.json(result);
   } catch (err) { res.status(500).json({ message: err.message }); }
 };
 
@@ -25,7 +27,8 @@ export const getClub = async (req, res) => {
 // POST /api/clubs
 export const createClub = async (req, res) => {
   try {
-    const club = await Club.create({ ...req.body, createdBy: req.user._id });
+    const { name, description, category, coverImage, coordinator } = req.body;
+    const club = await Club.create({ name, description, category, coverImage, coordinator, createdBy: req.user._id });
     res.status(201).json(club);
   } catch (err) { res.status(500).json({ message: err.message }); }
 };
@@ -42,7 +45,8 @@ export const updateClub = async (req, res) => {
 // DELETE /api/clubs/:id
 export const deleteClub = async (req, res) => {
   try {
-    await Club.findByIdAndDelete(req.params.id);
+    const club = await Club.findByIdAndDelete(req.params.id);
+    if (!club) return res.status(404).json({ message: 'Club not found' });
     res.json({ message: 'Club deleted successfully' });
   } catch (err) { res.status(500).json({ message: err.message }); }
 };

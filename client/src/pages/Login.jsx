@@ -24,6 +24,21 @@ const Login = () => {
     }
   };
 
+  const handleMicrosoftLogin = () => {
+    const clientId = import.meta.env.VITE_MICROSOFT_CLIENT_ID;
+    const redirectUri = import.meta.env.VITE_MICROSOFT_REDIRECT_URI || `${window.location.origin}/auth/microsoft/callback`;
+    const tenantId = import.meta.env.VITE_MICROSOFT_TENANT_ID || 'common';
+    
+    if (!clientId) {
+      toast.error('Microsoft login client ID is not configured');
+      return;
+    }
+
+    const scope = encodeURIComponent('user.read');
+    const authUrl = `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=${clientId}&response_type=code&redirect_uri=${encodeURIComponent(redirectUri)}&response_mode=query&scope=${scope}`;
+    window.location.href = authUrl.replace('/common/', `/${tenantId}/`);
+  };
+
   return (
     <div className="auth-container">
       <div className="auth-card">
@@ -41,6 +56,26 @@ const Login = () => {
             {loading ? 'Logging in...' : 'Login'}
           </button>
         </form>
+
+        <div className="auth-divider">
+          <span>or</span>
+        </div>
+
+        <button 
+          type="button" 
+          onClick={handleMicrosoftLogin} 
+          className="btn-microsoft" 
+          disabled={loading}
+        >
+          <svg width="18" height="18" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginRight: '8px', verticalAlign: 'middle' }}>
+            <path d="M0 0H11V11H0V0Z" fill="#F25022"/>
+            <path d="M12 0H23V11H12V0Z" fill="#7FBA00"/>
+            <path d="M0 12H11V23H0V12Z" fill="#00A4EF"/>
+            <path d="M12 12H23V23H12V12Z" fill="#FFB900"/>
+          </svg>
+          Sign in with Microsoft
+        </button>
+
         <p>Don't have an account? <Link to="/register">Register</Link></p>
       </div>
     </div>

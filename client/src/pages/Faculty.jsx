@@ -1,19 +1,27 @@
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import api from '../api/axios';
 import toast from 'react-hot-toast';
 import { Mail, Phone, MapPin, Clock, BookOpen, Search } from 'lucide-react';
 
 const Faculty = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [faculty, setFaculty] = useState([]);
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState(searchParams.get('search') || '');
   const [department, setDepartment] = useState('');
   const [departments, setDepartments] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const query = searchParams.get('search') || '';
+    setSearch(query);
+  }, [searchParams]);
+
+  useEffect(() => {
     api.get('/faculty').then(({ data }) => {
-      setFaculty(data);
-      const depts = [...new Set(data.map((f) => f.department).filter(Boolean))];
+      const facultyData = data.data || data;
+      setFaculty(facultyData);
+      const depts = [...new Set(facultyData.map((f) => f.department).filter(Boolean))];
       setDepartments(depts);
       setLoading(false);
     }).catch(() => {
@@ -26,7 +34,7 @@ const Faculty = () => {
     setLoading(true);
     try {
       const { data } = await api.get('/faculty', { params: { search: search || undefined, department: department || undefined } });
-      setFaculty(data);
+      setFaculty(data.data || data);
     } catch {
       toast.error('Failed to filter faculty');
     } finally {

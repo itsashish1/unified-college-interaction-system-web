@@ -18,7 +18,7 @@ const Announcements = () => {
     try {
       setLoading(true);
       const { data } = await api.get('/announcements', { params: category ? { category } : {} });
-      setAnnouncements(data);
+      setAnnouncements(data.data || data);
     } catch {
       toast.error('Failed to load announcements');
     } finally {

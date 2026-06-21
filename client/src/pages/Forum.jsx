@@ -17,7 +17,7 @@ const Forum = () => {
   const fetchPosts = async () => {
     try {
       const { data } = await api.get('/forum', { params: { category: category || undefined, search: search || undefined } });
-      setPosts(data);
+      setPosts(data.data || data);
     } catch {
       toast.error('Failed to load discussions');
     } finally {

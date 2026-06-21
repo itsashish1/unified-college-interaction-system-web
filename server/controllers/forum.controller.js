@@ -1,16 +1,18 @@
 import Post from '../models/Post.model.js';
+import { paginate } from '../utils/paginate.js';
 
 // GET /api/forum
 export const getPosts = async (req, res) => {
   try {
-    const { category, search } = req.query;
+    const { category, search, page, limit } = req.query;
     const filter = {};
     if (category) filter.category = category;
     if (search) filter.$or = [{ title: { $regex: search, $options: 'i' } }, { content: { $regex: search, $options: 'i' } }];
-    const posts = await Post.find(filter)
+    const query = Post.find(filter)
       .populate('author', 'name avatar role')
       .sort({ isPinned: -1, createdAt: -1 });
-    res.json(posts);
+    const result = await paginate(query, { page, limit });
+    res.json(result);
   } catch (err) { res.status(500).json({ message: err.message }); }
 };
 
@@ -29,7 +31,8 @@ export const getPost = async (req, res) => {
 // POST /api/forum
 export const createPost = async (req, res) => {
   try {
-    const post = await Post.create({ ...req.body, author: req.user._id });
+    const { title, content, category, tags } = req.body;
+    const post = await Post.create({ title, content, category, tags, author: req.user._id });
     res.status(201).json(post);
   } catch (err) { res.status(500).json({ message: err.message }); }
 };

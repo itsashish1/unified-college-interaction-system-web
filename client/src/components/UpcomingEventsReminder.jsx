@@ -14,7 +14,8 @@ const UpcomingEventsReminder = () => {
       try {
         const response = await api.get('/events');
         const today = new Date();
-        const upcoming = response.data
+        const eventsData = response.data.data || response.data;
+        const upcoming = eventsData
           .filter(event => {
             const eventDate = new Date(event.startDate);
             return eventDate >= today;

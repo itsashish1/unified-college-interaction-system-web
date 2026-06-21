@@ -18,10 +18,10 @@ const Home = () => {
       api.get('/announcements'),
     ]).then(([clubs, events, posts, announcements]) => {
       setStats({
-        clubs: clubs.data.length,
-        events: events.data.length,
-        posts: posts.data.length,
-        notices: announcements.data.length,
+        clubs: clubs.data.pagination?.total || clubs.data.data?.length || clubs.data.length,
+        events: events.data.pagination?.total || events.data.data?.length || events.data.length,
+        posts: posts.data.pagination?.total || posts.data.data?.length || posts.data.length,
+        notices: announcements.data.pagination?.total || announcements.data.data?.length || announcements.data.length,
       });
     }).catch(() => {});
   }, []);

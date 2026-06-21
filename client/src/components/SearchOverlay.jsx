@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api/axios';
-import { Search, X, Loader2, Users, Calendar, MessageSquare, Briefcase } from 'lucide-react';
+import { Search, X, Loader2, Users, Calendar, MessageSquare, Briefcase, Bot, BookOpen } from 'lucide-react';
 import './SearchOverlay.css';
 
 const SearchOverlay = ({ isOpen, onClose }) => {
@@ -55,14 +55,25 @@ const SearchOverlay = ({ isOpen, onClose }) => {
       <div className="search-overlay-content" onClick={(e) => e.stopPropagation()}>
         <div className="search-header">
           <Search className="search-icon-bg" size={24} />
-          <input
-            ref={inputRef}
-            type="text"
-            placeholder="Search for clubs, events, faculty, or posts..."
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            className="search-input-field"
-          />
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              if (query.trim()) {
+                handleNavigate(`/search?q=${encodeURIComponent(query)}`);
+              }
+            }}
+            style={{ flex: 1, display: 'flex', alignItems: 'center' }}
+          >
+            <input
+              ref={inputRef}
+              type="text"
+              placeholder="Search for clubs, events, faculty, or posts..."
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              className="search-input-field"
+              style={{ width: '100%' }}
+            />
+          </form>
           <button className="close-search" onClick={onClose}>
             <X size={24} />
           </button>
@@ -73,6 +84,17 @@ const SearchOverlay = ({ isOpen, onClose }) => {
             <div className="search-loading">
               <Loader2 className="animate-spin" size={32} />
               <p>Searching college database...</p>
+            </div>
+          )}
+
+          {!loading && results && results.aiSuggestion && (
+            <div className="ai-suggestion-card" style={{ background: 'linear-gradient(to right, #eff6ff, #f8fafc)', borderLeft: '4px solid #3b82f6', padding: '1rem', borderRadius: 'var(--radius)', marginBottom: '1.5rem' }}>
+              <h4 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#2563eb', margin: '0 0 0.5rem 0' }}>
+                 <Bot size={18} /> AI Insights
+              </h4>
+              <p style={{ margin: 0, fontSize: '0.95rem', color: 'var(--text)' }}>
+                {results.aiSuggestion}
+              </p>
             </div>
           )}
 
@@ -120,7 +142,7 @@ const SearchOverlay = ({ isOpen, onClose }) => {
                   <h3><Briefcase size={18} /> Faculty Directory</h3>
                   <div className="result-items">
                     {results.faculty.map(fac => (
-                      <div key={fac._id} className="result-item" onClick={() => handleNavigate(`/faculty`)}>
+                      <div key={fac._id} className="result-item" onClick={() => handleNavigate(`/faculty?search=${encodeURIComponent(fac.name)}`)}>
                         <div className="item-icon bg-green">{fac.name.charAt(0)}</div>
                         <div className="item-info">
                           <span className="item-title">{fac.name}</span>
@@ -138,7 +160,7 @@ const SearchOverlay = ({ isOpen, onClose }) => {
                   <h3><MessageSquare size={18} /> Forum Discussions</h3>
                   <div className="result-items">
                     {results.posts.map(post => (
-                      <div key={post._id} className="result-item" onClick={() => handleNavigate(`/forum`)}>
+                      <div key={post._id} className="result-item" onClick={() => handleNavigate(`/forum/${post._id}`)}>
                         <div className="item-icon bg-orange"><MessageSquare size={14} /></div>
                         <div className="item-info">
                           <span className="item-title">{post.title}</span>
@@ -150,37 +172,38 @@ const SearchOverlay = ({ isOpen, onClose }) => {
                 </div>
               )}
 
-              {/* PLACEMENTS SECTION */}
-              {results.placements?.length > 0 && (
+              {/* STUDY RESOURCES SECTION */}
+              {results.resources?.length > 0 && (
                 <div className="result-category">
-                  <h3><Briefcase size={18} /> Career & Placements</h3>
+                  <h3><BookOpen size={18} /> Study Resources</h3>
                   <div className="result-items">
-                    {results.placements.map(job => (
-                      <div key={job._id} className="result-item" onClick={() => handleNavigate(`/placements`)}>
-                        <div className="item-icon bg-purple"><Briefcase size={14} /></div>
+                    {results.resources.map(res => (
+                      <div key={res._id} className="result-item" onClick={() => handleNavigate(`/resources?search=${encodeURIComponent(res.title)}`)}>
+                        <div className="item-icon bg-purple"><BookOpen size={14} /></div>
                         <div className="item-info">
-                          <span className="item-title">{job.company}</span>
-                          <span className="item-meta">{job.role} • {job.type}</span>
+                          <span className="item-title">{res.title}</span>
+                          <span className="item-meta">{res.subject} • {res.department}</span>
                         </div>
                       </div>
                     ))}
                   </div>
                 </div>
               )}
+
             </div>
           )}
 
           {!loading && query.trim().length >= 2 && results && 
             Object.values(results).every(arr => arr.length === 0) && (
-            <div className="search-empty">
-              <p>No internal matches found for "<strong>{query}</strong>"</p>
-              <button 
-                className="btn-external-search"
-                onClick={() => handleNavigate('/search')}
-              >
-                Try External Search (CSE)
-              </button>
-            </div>
+             <div className="search-empty">
+               <p>No internal matches found for "<strong>{query}</strong>"</p>
+               <button 
+                 className="btn-external-search"
+                 onClick={() => handleNavigate(`/search?q=${encodeURIComponent(query)}`)}
+               >
+                 Search Everything (Web + Campus)
+               </button>
+             </div>
           )}
 
           {!query && (

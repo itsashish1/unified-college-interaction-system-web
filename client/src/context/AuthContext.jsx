@@ -26,6 +26,13 @@ export const AuthProvider = ({ children }) => {
     return data.user;
   };
 
+  const loginWithMicrosoft = async (code, redirectUri) => {
+    const { data } = await api.post('/auth/microsoft', { code, redirectUri });
+    localStorage.setItem('ucis_token', data.token);
+    setUser(data.user);
+    return data.user;
+  };
+
   const register = async (formData) => {
     const { data } = await api.post('/auth/register', formData);
     localStorage.setItem('ucis_token', data.token);
@@ -39,7 +46,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, register, logout }}>
+    <AuthContext.Provider value={{ user, loading, login, register, logout, loginWithMicrosoft }}>
       {children}
     </AuthContext.Provider>
   );
